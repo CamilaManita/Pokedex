@@ -1,18 +1,21 @@
+import { Link } from 'react-router-dom';
 import style from './Card.module.css';
 
-const Card = (props) => {
+const Card = ({id, name, image, types}) => {
     return (
         <div className={style.card}>
-            {/* <p>Este componente debe mostrar la info de cada usuario mapeado, pero además darnos un link para ir al detalle del usuario en cuestion</p> */}
-            <p>Name: {props.name}</p>
-            <p>Image: {props.image}</p>
-            <p>Hp: {props.hp}</p>
-            <p>Attack: {props.attack}</p>
-            <p>Defense: {props.defense}</p>
-            <p>Speed: {props.speed}</p>
-            <p>Height: {props.height}</p>
-            <p>Weight: {props.weight}</p>
-            <p>Types: {props.types}</p>
+            <Link to={`/detail/${id}`}>
+                {/* <p>Este componente debe mostrar la info de cada usuario mapeado, pero además darnos un link para ir al detalle del usuario en cuestion</p> */}
+                <p>{name}</p>
+                <img src={image} alt={name}/>
+                {/* <p>Hp: {props.hp}</p>
+                <p>Attack: {props.attack}</p>
+                <p>Defense: {props.defense}</p>
+                <p>Speed: {props.speed}</p>
+                <p>Height: {props.height}</p>
+                <p>Weight: {props.weight}</p> */}
+                <p>Types: {types}</p>
+            </Link>
         </div>
     )
 }

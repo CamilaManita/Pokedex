@@ -7,3 +7,14 @@
 // }
 
 // export default About;
+
+// import React from 'react'
+
+//Esto se hace con rfc
+// function About() {
+//   return (
+//     <div>About</div>
+//   )
+// }
+
+// export default About
