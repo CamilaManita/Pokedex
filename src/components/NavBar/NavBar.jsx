@@ -1,4 +1,4 @@
-// import SearchBar from '../SearchBar/SearchBar';
+import SearchBar from '../SearchBar/SearchBar';
 import { Link } from 'react-router-dom';
 import style from './NavBar.module.css';
 
@@ -11,7 +11,7 @@ const Nav = () => {
             <button>
                 <Link to={'/create'}>Form</Link>
             </button>
-            {/* <SearchBar  onSearch={onSearch} /> */}
+            <SearchBar  />
         </nav>
     )
 }

@@ -3,3 +3,6 @@ export const GET_DETAIL = 'GET_DETAIL'
 export const FILTER = 'FILTER';
 export const ORDER = 'ORDER';
 export const CLEAN_DETAIL = 'CLEAN_DETAIL';
+export const GET_TYPES = 'GET_TYPES';
+export const POST_POKEMON = 'POST_POKEMON';
+export const GET_NAME = 'GET_NAME';

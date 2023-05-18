@@ -1,18 +1,31 @@
-// import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { cleanDetail, getName } from '../../redux/actions';
 
-// const SearchBar = ({onSearch}) => {
-//     const [name, setName] = useState('');
+const SearchBar = () => {
 
-//     const handleChange = (event) => {
-//         setName(event.target.value);
-//     }
+    // const dispatch = useDispatch();
+    const [name, setName] = useState('');
 
-//     return (
-//         <div>
-//             <input type='search' onChange={handleChange} value={id}/>
-//             <button onClick={() => {onSearch(name); setName('')}}>Buscar</button>
-//         </div>
-//     )
-// }
+    // useEffect(() => {
+    //     dispatch(getName(name));
+    //     return () => dispatch(cleanDetail());
+    // }, [name, dispatch])
 
-// export default SearchBar;
+    const handleChange = (event) => {
+        setName(event.target.value)
+        // const property = event.target.name;
+        // const value = event.target.value;
+
+        // setName({ ...name, [property]: value});
+    }
+
+    return (
+        <div>
+            <input type='search' onChange={handleChange} value={name}/>
+            <button onClick={() => {getName(name); setName('')}}>Buscar</button>
+        </div>
+    )
+}
+
+export default SearchBar;
