@@ -4,16 +4,10 @@ import { Home, Landing, Detail, Form } from './views';
 import NavBar from './components/NavBar/NavBar';
 
 function App() {
-
   const location = useLocation();
-
-
 
   return (
     <div className="App">
-      {
-        location.pathname !== '/' && <NavBar/>
-      }
       <Routes>
         <Route exact path='/' element={ <Landing/> } />
         <Route path='/home' element={ <Home/> } />

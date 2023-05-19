@@ -20,6 +20,7 @@ const Detail = () => {
           <Link to="/home">Home</Link>
         </button>
         <h1>{name}</h1>
+        <p>Id: {id}</p>
         <p>Health points: {hp}</p>
         <p>Attack: {attack}</p>
         <p>Defense: {defense}</p>

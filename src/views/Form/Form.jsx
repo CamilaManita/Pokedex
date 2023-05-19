@@ -193,7 +193,7 @@ const Form = () => {
           </div>
           <label htmlFor="image">Image</label>
           <input
-            type="url"
+            type="text"
             name="image"
             id="image"
             placeholder="Ingrese imagen"

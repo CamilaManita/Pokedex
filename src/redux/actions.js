@@ -1,5 +1,5 @@
 import axios from "axios";
-import { FILTER, GET_DETAIL, GET_POKEMONS, ORDER, CLEAN_DETAIL, GET_TYPES, POST_POKEMON, GET_NAME } from "./actions_types";
+import { FILTER_TYPE, GET_DETAIL, GET_POKEMONS, CLEAN_DETAIL, GET_TYPES, POST_POKEMON, GET_NAME, ORDER, FILTER_STATE } from "./actions_types";
 
 export const getPokemons = () => {
     return async function (dispatch) {
@@ -17,8 +17,13 @@ export const getDetail = (id) => {
 
 export const getName = (name) => {
     return async function (dispatch) {
-        const { data } = await axios.get(`http://localhost:3001/pokemons/${name}`);
-        dispatch({ type: GET_NAME, payload: data })
+        try {
+            const { data } = await axios.get(`http://localhost:3001/pokemons?name=${name}`);
+            dispatch({ type: GET_NAME, payload: data })
+            
+        } catch (error) {
+            console.log(error.message);
+        }
     }
 }
 
@@ -41,11 +46,12 @@ export const postPokemon = (newPokemon) => {
 }
 
 export const filter = (type) => {
-    return { type: FILTER, payload: type };
+    return { type: FILTER_TYPE, payload: type };
 };
 
-export const order = (order) => {
-    return { type: ORDER, payload: order };
+
+export const order = (order) => { // A: ascendente o D: descendente
+    return { type: ORDER, payload: order }
 }
 
 export const cleanDetail = () => {

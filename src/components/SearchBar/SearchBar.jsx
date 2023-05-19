@@ -1,29 +1,32 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { cleanDetail, getName } from '../../redux/actions';
+import { getName } from '../../redux/actions';
 
 const SearchBar = () => {
-
-    // const dispatch = useDispatch();
-    const [name, setName] = useState('');
-
-    // useEffect(() => {
-    //     dispatch(getName(name));
-    //     return () => dispatch(cleanDetail());
-    // }, [name, dispatch])
+    const dispatch = useDispatch();
+    const [search, setSearch] = useState('');
 
     const handleChange = (event) => {
-        setName(event.target.value)
-        // const property = event.target.name;
-        // const value = event.target.value;
+        event.preventDefault();
+        setSearch(event.target.value);
+    }
 
-        // setName({ ...name, [property]: value});
+    const submit = (event) => {
+        event.preventDefault();
+        if (search.length > 0) {
+            dispatch(getName(search.toLocaleLowerCase()));
+            setSearch('');
+        }
     }
 
     return (
         <div>
-            <input type='search' onChange={handleChange} value={name}/>
-            <button onClick={() => {getName(name); setName('')}}>Buscar</button>
+            <form onSubmit={submit}>
+                <div>
+                    <input type='search' onChange={handleChange} value={search} placeholder='Busca tu pokemon...'/>
+                    <input type='submit' value='Find!'/>
+                </div>
+            </form>
         </div>
     )
 }

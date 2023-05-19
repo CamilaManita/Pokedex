@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 
 const Landing = () => {
-    //Lógica del componente
 
     return (
         <div>
