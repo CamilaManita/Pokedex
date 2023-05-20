@@ -42,23 +42,23 @@ const reducer = (state = initialState, action) => {
       return { ...state };
 
 
-
-    // case FILTER_TYPE:
-    //   let allPokemonsType = state.pokemonsFiltered;
-    //   let typeFiltered = 
-    //     action.payload  === 'all'
-    //       ? allPokemonsType
-    //       : allPokemonsType.filter((type) => {
-    //         return type.pokemonsTypes.some((d) => d.name === action.payload);
-    //       });
-    //   return {
-    //     ...state,
-    //     pokemons: typeFiltered
-    //   }
+    case FILTER_TYPE:
+      let allPokemonsType = state.allPokemons;
+      let typeFiltered = 
+        action.payload  === 'all'
+          ? allPokemonsType
+          : allPokemonsType.filter((pokemon) => {
+            return pokemon.types.some((name) => name === action.payload);
+          });
+      return {
+        ...state,
+        pokemons: typeFiltered
+      }
 
     case ORDER:
+      const orderPokemons = [...state.allPokemons];
       if (action.payload === 'A') {
-        state.allPokemons.sort(function (a,b) {
+        orderPokemons.sort(function (a,b) {
           if (a.name > b.name) {
             return 1
           }
@@ -67,10 +67,14 @@ const reducer = (state = initialState, action) => {
           }
           return 0;
         });
+        return {
+          ...state,
+          pokemons: orderPokemons
+        }
       }
 
       if (action.payload === 'D') {
-        state.allPokemons.sort(function (a, b) {
+        orderPokemons.sort(function (a, b) {
           if (a.name > b.name) {
             return -1
           }
@@ -78,10 +82,14 @@ const reducer = (state = initialState, action) => {
             return 1
           }
         });
+        return {
+          ...state,
+          pokemons: orderPokemons
+        }
       }
 
       if (action.payload === 'W') { //W de Weak = Debil
-        state.allPokemons.sort(function (a,b) {
+        orderPokemons.sort(function (a,b) {
           if (a.attack > b.attack) {
             return 1
           }
@@ -90,10 +98,14 @@ const reducer = (state = initialState, action) => {
           }
           return 0
         });
+        return {
+          ...state,
+          pokemons: orderPokemons
+        }
       }    
       
       if (action.payload === 'S') { //S de Strong = fuerte
-        state.allPokemons.sort(function (a,b) {
+        orderPokemons.sort(function (a,b) {
           if (a.attack > b.attack) {
             return -1
           }
@@ -101,13 +113,17 @@ const reducer = (state = initialState, action) => {
             return 1;
           }
         });
+        return {
+          ...state,
+          pokemons: orderPokemons
+        }
       }
 
       if (action.payload === 'none') {
       }
       return {
         ...state,
-        allPokemons: state.allPokemons
+        pokemons: orderPokemons
       };
 
     case CLEAN_DETAIL:

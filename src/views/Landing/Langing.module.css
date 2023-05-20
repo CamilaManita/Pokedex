@@ -1,0 +1,10 @@
+.landingFondo {
+    background-image: url("../../../Imagenes/FondoPoke.jpg");
+    margin: 0;
+    padding: 1px;
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    height: 100vh;
+}

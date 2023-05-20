@@ -9,8 +9,6 @@ import { Paginacion } from "../../components/Paginated/Paginacion";
 
 const Home = ({pokemons}) => { 
     const dispatch = useDispatch();
-    const types = useSelector((state) => state.pokemonsTypes);
-    // const pokemons = useSelector((state) => state.pokemons);
     const allPokemons = useSelector((state) => state.allPokemons);
 
     // ----------- PAGINADO ----------------
