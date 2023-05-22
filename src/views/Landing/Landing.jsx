@@ -1,17 +1,17 @@
 import { Link } from 'react-router-dom';
-import './Langing.module.css'
+import style from './Langing.module.css';
 
 const Landing = () => {
 
     return (
-        <body className='landingFondo'>
-            <div>
-                <h1> Press start to start your pokedex </h1>
-                <button>
-                    <Link to='/home'>Home</Link>
+            <div className={style.body}>
+                <img src='https://www.pngall.com/wp-content/uploads/13/Pokemon-Logo-Background-PNG.png' className={style.logo}/>
+                <img src='https://imagenpng.com/wp-content/uploads/2016/09/Pokebola-pokeball-png-1.png' className={style.imagen} />
+                <button className={style.boton}>
+                    <Link to='/home' className={style.link}>Start</Link>
                 </button>
             </div>
-        </body>
+
     )
 }
 

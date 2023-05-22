@@ -1,8 +1,7 @@
-.container{
-    border:  1px solid black;
+.container {
     display: flex;
-    flex-direction: row;
-    border-radius: 15px ;
+    justify-content: space-around;
     flex-wrap: wrap;
-    gap: 1em;
+    margin-left: 3%;
+    margin-right: 3%;
 }

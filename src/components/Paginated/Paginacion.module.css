@@ -1,6 +1,6 @@
 .buttonNumber {
     background-color: white;
-    color: rgb(8, 0, 122);
+    color: #FF0D0D;
     border-radius: 20px;
     width: 30px;
     height: 30px;
@@ -10,6 +10,12 @@
   }
   
   .buttonNumber:hover {
+    background-color: #c8d1d2;
+    color: black;
+    box-shadow: 0 0 5px #c8d1d2, 0 0 25px #c8d1d2;
+  }
+
+  .buttonNumber.is-current {
     background-color: #c8d1d2;
     color: black;
     box-shadow: 0 0 5px #c8d1d2, 0 0 25px #c8d1d2;
@@ -32,13 +38,14 @@
     margin-left: 10px;
     margin-right: 10px;
     border-radius: 15px;
-    border: 2px solid;
-    border-color: #c8d1d2;
+    border: none;
+    /* border-color: #c8d1d2; */
     color: white;
     background-color: black;
   }
   .pagination-button:hover {
-    border-color: #c8d1d2;
+    border: none;
+    /* border-color: #c8d1d2; */
     color: black;
     background-color: #c8d1d2;
     transition: all 0.5s;

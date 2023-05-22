@@ -1,11 +1,10 @@
 import Cards from "../../components/Cards/Cards";
 import { useEffect, useState } from "react";
 import { connect, useDispatch, useSelector } from "react-redux";
-import { getPokemons, getTypes, order, filter } from "../../redux/actions";
+import { getPokemons, getTypes} from "../../redux/actions";
 import NavBar from "../../components/NavBar/NavBar";
 import { Paginacion } from "../../components/Paginated/Paginacion";
-
-
+import style from './Home.module.css'
 
 const Home = ({pokemons}) => { 
     const dispatch = useDispatch();
@@ -40,58 +39,21 @@ const Home = ({pokemons}) => {
         dispatch(getTypes());
     }, [dispatch])
 
-    const orderHandler = (event) => {
-        event.preventDefault();
-        dispatch(order(event.target.value))
-    }
 
-    const filterType = (event) => {
-        dispatch(filter(event.target.value))
-    };
 
     return (
-        <div>
+        <div className={style.body}>
             <NavBar />
-            <select onChange={(event) => orderHandler(event)}>
-                <option value='none'>Order</option>
-                <option value='A'>A-Z</option>
-                <option value='D'>Z-A</option>
-                <option value='W'>Weakness</option>
-                <option value='S'>Strong</option>
-            </select>
-
-            <select onChange={ types => {filterType(types)} }>
-                <option value='all'>Types</option>
-                <option value='normal'>normal</option>
-                <option value='rock'>rock</option>
-                <option value='water'>water</option>
-                <option value='dragon'>dragon</option>
-                <option value='flying'>flying</option>
-                <option value='ghos'>ghost</option>
-                <option value='electric'>electric</option>
-                <option value='fairy'>fairy</option>
-                <option value='poison'>poison</option>
-                <option value='steel'>steel</option>
-                <option value='psychic'>psychic</option>
-                <option value='unknown'>unknown</option>
-                <option value='fighting'>fighting</option>
-                <option value='fire'>fire</option>
-                <option value='ice'>ice</option>
-                <option value='shadow'>shadow</option>
-                <option value='ground'>ground</option>
-                <option value='bug'>bug</option>
-                <option value='grass'>grass</option>
-                <option value='dark'>dark</option>
-            </select>
 
             {!pokemons.length ? (
-                <div>
+                <div className={style.espera}>
                     <h1>One moment, please</h1>
+                    <img src="https://media.tenor.com/8wfTNKNK99EAAAAi/snorlax-roll.gif" alt="Loading" />
                 </div>
             ) : (
                 <div>
-                    <Paginacion pokemons={pokemons.length} pagination={pagination} perPage={perPage} currentPage={currentPage} setCurrentPage={setCurrentPage} />
                     <Cards pokemons={currentPokemons} />
+                    <Paginacion pokemons={pokemons.length} pagination={pagination} perPage={perPage} currentPage={currentPage} setCurrentPage={setCurrentPage} />
                 </div>
             )}
 
@@ -99,6 +61,8 @@ const Home = ({pokemons}) => {
         </div>
     )
 }
+
+// export default Home;
 
 const mapStateToProps = (state) => {
     return {

@@ -13,8 +13,10 @@ const validation = (form) => {
     //image
 
     if(!form.image) errors.image = 'Por favor completa este campo';
+    if(!/\.(jpg|png)$/i.test(form.image)) errors.image = "La URL debe terminar en .jpg o .png";
 
-    if(!/(https?:\/\/.*\.(?:png|jpg))/i.test(form.image)) errors.image = 'Solo se permiten fotos png o jpg'
+    // types
+    if (form.types.length === 0) errors.types = "Debes seleccionar al menos un tipo";
     
     //hp
     if(!form.hp) errors.hp = "Por favor completa este campo";

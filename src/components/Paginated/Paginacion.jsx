@@ -1,5 +1,5 @@
 import React from 'react';
-import './Paginacion.module.css'
+import styles from './Paginacion.module.css'
 
 export const Paginacion = ({pokemons, pagination, perPage, currentPage}) => {
   const pagesCount = pokemons === 250 ? 26 : Math.ceil(pokemons /perPage); //Calcula la cantidad de paginas necesarias para mostrar los paises
@@ -23,35 +23,39 @@ export const Paginacion = ({pokemons, pagination, perPage, currentPage}) => {
   };
 
   return (
-    <div className="pagination">
-      <button
-        className={currentPage !== 1 ? "pagination-button" : "disable"}
-        onClick={() => handleClick(currentPage - 1)}
-        disabled={currentPage === 1}
-      >
-        Anterior
-      </button>
-  
-      {pageNumbers.map((number) => ( //a través de map creo un botón para cada num de página
-        <div key={number}>
+    <div className={styles.pagination}>
+      {currentPage >= 22 ? (
+        <h1>¡Lo sentimos, no hay más pokemones!</h1>
+      ) : (
+        <>
           <button
-            onClick={() => handleClick(number)}
-            className={`buttonNumber ${
-              currentPage === number ? "is-current" : ""
-            }`}
+            className={currentPage !== 1 ? styles["pagination-button"] : styles.disable}
+            onClick={() => handleClick(currentPage - 1)}
+            disabled={currentPage === 1}
           >
-            {number}
+            Anterior
           </button>
-        </div>
-      ))}
-  
-      <button
-        className={currentPage !== pagesCount ? "pagination-button" : "disable"}
-        onClick={() => handleClick(currentPage + 1)}
-        disabled={currentPage === pagesCount}
-      >
-        Siguiente
-      </button>
+
+          {pageNumbers.map((number) => (
+            <div key={number}>
+              <button
+                onClick={() => handleClick(number)}
+                className={`${styles.buttonNumber} ${currentPage === number ? styles["is-current"] : ""}`}
+              >
+                {number}
+              </button>
+            </div>
+          ))}
+
+          <button
+            className={currentPage !== pagesCount ? styles["pagination-button"] : styles.disable}
+            onClick={() => handleClick(currentPage + 1)}
+            disabled={currentPage === pagesCount}
+          >
+            Siguiente
+          </button>
+        </>
+      )}
     </div>
   );
 };

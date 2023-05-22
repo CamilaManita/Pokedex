@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { getName } from '../../redux/actions';
+import style from './SearchBar.module.css';
 
 const SearchBar = () => {
     const dispatch = useDispatch();
@@ -21,10 +22,11 @@ const SearchBar = () => {
 
     return (
         <div>
-            <form onSubmit={submit}>
-                <div>
-                    <input type='search' onChange={handleChange} value={search} placeholder='Busca tu pokemon...'/>
-                    <input type='submit' value='Find!'/>
+            <form onSubmit={submit} >
+                <div className={style.container}>
+                    <input type='search' onChange={handleChange} value={search} placeholder='Busca tu pokemon...' className={style.inputs}/>
+                    <button>Find!</button>
+                    {/* <input type='submit' value='Find!' className={style.container}/> */}
                 </div>
             </form>
         </div>
