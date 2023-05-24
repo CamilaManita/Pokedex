@@ -1,4 +1,4 @@
-.body{
+/* .body{
     margin: 0;
     padding: 0;
     height: 170vh;
@@ -8,7 +8,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
-}
+} */
 
 
 .container{
@@ -39,6 +39,7 @@
 }
 
 .container div h1{
+    text-transform: uppercase;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     margin-top: none;
@@ -64,7 +65,7 @@
 
 .container div p{
     width: fit-content;
-    color: white;
+    color: black;
     font-family: 'Encode Sans', sans-serif;
     margin-left: 9rem;
     margin-bottom: 1.5rem;

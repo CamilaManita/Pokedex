@@ -14,7 +14,8 @@ const initialState = {
   pokemons: [],
   pokemonDetail: {},
   pokemonsTypes: [],
-  pokemonsFiltered: []
+  pokemonsFiltered: [],
+  selectedType: []
 };
 
 const reducer = (state = initialState, action) => {
@@ -40,7 +41,6 @@ const reducer = (state = initialState, action) => {
 
     case POST_POKEMON:
       return { ...state };
-
 
     case FILTER_TYPE:
       let allPokemonsType = state.allPokemons;

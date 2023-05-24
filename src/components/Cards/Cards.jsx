@@ -10,7 +10,7 @@ const Cards = ({pokemons}) => {
                 <Card 
                     name={pokemon.name}
                     image={pokemon.image}
-                    types={pokemon.types}
+                    types={pokemon.types} 
                     key={pokemon.id}
                     id={pokemon.id}
                 />

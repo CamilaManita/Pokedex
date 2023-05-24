@@ -1,5 +1,6 @@
 import axios from "axios";
-import { FILTER_TYPE, GET_DETAIL, GET_POKEMONS, CLEAN_DETAIL, GET_TYPES, POST_POKEMON, GET_NAME, ORDER, FILTER_STATE } from "./actions_types";
+import { FILTER_TYPE, GET_DETAIL, GET_POKEMONS, CLEAN_DETAIL, GET_TYPES, POST_POKEMON, GET_NAME, ORDER} from "./actions_types";
+
 
 export const getPokemons = () => {
     return async function (dispatch) {
@@ -53,6 +54,7 @@ export const filter = (type) => {
 export const order = (order) => { // A: ascendente o D: descendente
     return { type: ORDER, payload: order }
 }
+
 
 export const cleanDetail = () => {
     return { type: CLEAN_DETAIL }

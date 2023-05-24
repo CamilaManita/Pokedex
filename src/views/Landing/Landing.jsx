@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'; // Este componente se utiliza para crear enlaces internos dentro de una aplicación react
 import style from './Langing.module.css';
 
 const Landing = () => {

@@ -8,8 +8,10 @@ import { postPokemon } from "../../redux/actions";
 const Form = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  // Accedemos al estado almacenado en el store de redux y obtenemos los tipos de pokemon disponibles
   const { pokemonsTypes } = useSelector((state) => state);
   
+  // Inicializamos el estado del formulario con sus respectivas propiedades
   const [form, setForm] = useState({
     name: "",
     image: "",
@@ -24,7 +26,7 @@ const Form = () => {
   
   const [errorMessage, setErrorMessage] = useState({});
   
-
+  // Función que maneja los cambios en los campos del formulario
   const changeHandler = (event) => {
     const property = event.target.name;
     const value = event.target.value;
@@ -35,6 +37,7 @@ const Form = () => {
     setErrorMessage(errors);
   };
 
+  // Función que maneja la seleccion de tipos de pokemon
   const handleSelect = (event) => {
     const newType = event.target.value;
     if (form.types.includes(newType)) {
