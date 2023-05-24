@@ -54,7 +54,7 @@ const NavBar = ({setCurrentPage}) => {
                 <Link to={'/create'} className={style.links}>Create pokemon</Link>
             </button>
             <button className={style.btns} onClick={handleReset}>Reset</button>
-            <SearchBar />
+            <SearchBar setCurrentPage={setCurrentPage}/>
         </nav>
     )
 }

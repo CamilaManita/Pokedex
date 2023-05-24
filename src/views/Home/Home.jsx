@@ -6,10 +6,11 @@ import NavBar from "../../components/NavBar/NavBar";
 import { Paginacion } from "../../components/Paginated/Paginacion";
 import style from './Home.module.css'
 
-const Home = ({pokemons}) => { 
+const Home = () => { 
     const dispatch = useDispatch();
     //Obtenemos la lista de todos los pokemons 
     const allPokemons = useSelector((state) => state.allPokemons);
+    const pokemons = useSelector(state => state.pokemons);
 
     // ----------- PAGINADO ----------------
 
@@ -65,13 +66,4 @@ const Home = ({pokemons}) => {
     )
 }
 
-const mapStateToProps = (state) => {
-    return {
-        pokemons: state.pokemons
-    }
-}
-
-export default connect(
-    mapStateToProps,
-    null
-)(Home);
+export default Home;

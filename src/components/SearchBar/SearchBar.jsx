@@ -3,10 +3,9 @@ import { useDispatch } from 'react-redux';
 import { getName } from '../../redux/actions';
 import style from './SearchBar.module.css';
 
-const SearchBar = () => {
+const SearchBar = ({setCurrentPage}) => {
     const dispatch = useDispatch();
     const [search, setSearch] = useState('');
-    const [error, setError] = useState(false);
 
 
     const handleChange = (event) => {
@@ -20,6 +19,7 @@ const SearchBar = () => {
             dispatch(getName(search.toLocaleLowerCase()));
             setSearch('');
         }
+        setCurrentPage(1);
     }
 
     return (
