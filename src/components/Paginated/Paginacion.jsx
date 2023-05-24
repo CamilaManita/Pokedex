@@ -3,7 +3,7 @@ import styles from './Paginacion.module.css'
 
 // Pokemons: numero total de pokemones, Pagination: Funcion para cambiar de página, perPage: Cantidad de pokemones por página, currentPage: Página actual
 export const Paginacion = ({pokemons, pagination, perPage, currentPage}) => {
-  const pagesCount = pokemons === 250 ? 26 : Math.ceil(pokemons /perPage); //Calcula la cantidad de paginas necesarias para mostrar los pokemones
+  const pagesCount = Math.ceil(pokemons /perPage); //Calcula la cantidad de paginas necesarias para mostrar los pokemones
 
   const pageNumbers = []; //Almaceno los numeros de pag que se mostrarán
   const maxPagesToShow = 5; //Cantidad máxima de numeros que se mostrarán en la paginación
@@ -45,7 +45,6 @@ export const Paginacion = ({pokemons, pagination, perPage, currentPage}) => {
           <button
             className={currentPage !== 1 ? styles["pagination-button"] : styles.disable}
             onClick={handleFirstPage}
-            disabled={currentPage === 1}
           >
             First
           </button>
@@ -78,7 +77,6 @@ export const Paginacion = ({pokemons, pagination, perPage, currentPage}) => {
           <button
             className={currentPage !== pagesCount ? styles["pagination-button"] : styles.disable}
             onClick={handleLastPage}
-            disabled={currentPage === pagesCount}
           >
             Last
           </button>

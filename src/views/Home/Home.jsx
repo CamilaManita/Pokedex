@@ -21,12 +21,11 @@ const Home = () => {
     
     // Cuando llamamos esta funcion con un número de página, se actualiza la cantidad que se muestra por página y tambien cambia la pagina    
     const pagination = (pageNumber) => {
-        setPerPage(pageNumber === 1 ? 12 : 12);
         setCurrentPage(pageNumber)
+        // setPerPage(pageNumber === 1 ? 12 : 12);
     }
 
     //Compuedo si la pagina es la primera, si es así devuelvo el index del último pokemon allí, de lo contrario devuelvo el i del ultimo pokemon de la pagina donde esté
-
     const indexOfLast = currentPage === 1 ? currentPage * perPage : currentPage * perPage - 1;
     
     //Resto para obtener el primer pokemon de la pagina actual

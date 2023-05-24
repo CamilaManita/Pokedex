@@ -1,15 +1,21 @@
 import style from './Form.module.css'
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 import validation from "./validations";
-import { postPokemon } from "../../redux/actions";
+import { getTypes, postPokemon } from "../../redux/actions";
 
 const Form = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   // Accedemos al estado almacenado en el store de redux y obtenemos los tipos de pokemon disponibles
   const { pokemonsTypes } = useSelector((state) => state);
+
+  useEffect(() => {
+    if(pokemonsTypes.length === 0){
+      dispatch(getTypes())
+    }
+  }, [dispatch])
   
   // Inicializamos el estado del formulario con sus respectivas propiedades
   const [form, setForm] = useState({
@@ -41,7 +47,7 @@ const Form = () => {
   const handleSelect = (event) => {
     const newType = event.target.value;
     if (form.types.includes(newType)) {
-      alert("Ese tipo ya esta seleccionado");
+      alert("That type is already selected");
       return;
     }
 
@@ -54,7 +60,7 @@ const Form = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     dispatch(postPokemon(form));
-    alert("Pokemon añadido exitosamente");
+    alert("Pokemon added successfully");
 
     setForm({
       name: "",
@@ -80,9 +86,9 @@ const Form = () => {
   return (
     <div className={style.body}>
       <div>
-      <button className={style.boton}>
-          <Link to="/home" className={style.link}>Home</Link>
-        </button>
+          <Link to="/home" className={style.link}>
+            <button className={style.boton}>Home</button>
+          </Link>
         <form onSubmit={handleSubmit} className={style.form}>
           <div>
             <label htmlFor="name" className={style.label}>Name</label>
@@ -90,7 +96,7 @@ const Form = () => {
               type="text"
               name="name"
               id="name"
-              placeholder="Ingrese el nombre"
+              placeholder="name"
               autoComplete="off"
               value={form.name}
               onChange={changeHandler}
@@ -100,12 +106,12 @@ const Form = () => {
           </div>
 
           <div>
-            <label htmlFor="hp" className={style.label}>Hp</label>
+            <label htmlFor="hp" className={style.label}>Health points</label>
             <input
-              type="text"
+              type="number"
               name="hp"
               id="hp"
-              placeholder="Ingrese el hp"
+              placeholder="health points"
               autoComplete="off"
               value={form.hp}
               onChange={changeHandler}
@@ -115,12 +121,12 @@ const Form = () => {
           </div>
 
           <div>
-            <label htmlFor="attack" className={style.label}>attack</label>
+            <label htmlFor="attack" className={style.label}>Attack</label>
             <input
               type="text"
               name="attack"
               id="attack"
-              placeholder="Ingrese el attack"
+              placeholder="attack"
               autoComplete="off"
               value={form.attack}
               onChange={changeHandler}
@@ -135,7 +141,7 @@ const Form = () => {
               type="text"
               name="defense"
               id="defense"
-              placeholder="Ingrese defense"
+              placeholder="defense"
               autoComplete="off"
               value={form.defense}
               onChange={changeHandler}
@@ -150,7 +156,7 @@ const Form = () => {
               type="text"
               name="speed"
               id="speed"
-              placeholder="Ingrese speed"
+              placeholder="speed"
               autoComplete="off"
               value={form.speed}
               onChange={changeHandler}
@@ -165,7 +171,7 @@ const Form = () => {
               type="text"
               name="height"
               id="height"
-              placeholder="Ingrese height"
+              placeholder="height"
               autoComplete="off"
               value={form.height}
               onChange={changeHandler}
@@ -180,7 +186,7 @@ const Form = () => {
               type="text"
               name="weight"
               id="weight"
-              placeholder="Ingrese weight"
+              placeholder="weight"
               autoComplete="off"
               value={form.weight}
               onChange={changeHandler}
@@ -193,7 +199,7 @@ const Form = () => {
           <div>
             <label className={style.label}> Types </label>
               <select onChange={handleSelect} className={style.select} >
-                <option value="" className={style.option}> Select types</option>
+                <option value={form.types} className={style.option}> Select types</option>
                 {pokemonsTypes?.map((type) => {
                   return (
                     <option key={type.id} name={type.id} value={type.id}>
@@ -221,7 +227,7 @@ const Form = () => {
               type="text"
               name="image"
               id="image"
-              placeholder="Ingrese la url de la imagen"
+              placeholder="url of the image"
               size="20"
               autoComplete="off"
               value={form.image}

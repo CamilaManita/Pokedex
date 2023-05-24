@@ -54,12 +54,14 @@ body {
     left: 50.8%;
     transform: translate(-50%, -50%); 
     display: inline-block;
-    padding: 3px 10px;
+    /* padding: 3px 10px; */
+    height: 60px;
+    width: 60px;
     background-color: #646161;
     color: #fff;
     font-size: 16px;
     border: transparent;
-    border-radius: 5rem;
+    border-radius: 50%;
     cursor: pointer;
     overflow: hidden;
     transition: .8s;
@@ -67,6 +69,7 @@ body {
 }
   
 .boton:hover{
-    background-color: #D0B022;
-    border-radius: 2rem;
+    /* background-color: #D0B022; */
+    background-color: #fff;
+    border-radius: 50%;
 }

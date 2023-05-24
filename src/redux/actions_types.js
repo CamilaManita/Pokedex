@@ -6,3 +6,4 @@ export const GET_TYPES = 'GET_TYPES';
 export const POST_POKEMON = 'POST_POKEMON';
 export const GET_NAME = 'GET_NAME';
 export const ORDER = 'ORDER';
+export const CREATE = 'CREATE';

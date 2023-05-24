@@ -1,3 +1,4 @@
+import { filter } from "./actions";
 import {
   GET_POKEMONS,
   GET_DETAIL,
@@ -6,7 +7,8 @@ import {
   POST_POKEMON,
   GET_NAME,
   FILTER_TYPE,
-  ORDER
+  ORDER,
+  CREATE,
 } from "./actions_types";
 
 const initialState = {
@@ -15,25 +17,25 @@ const initialState = {
   pokemonDetail: {},
   pokemonsTypes: [],
   pokemonsFiltered: [],
-  selectedType: []
+  selectedType: [],
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_POKEMONS:
-      return { 
+      return {
         ...state,
         pokemons: action.payload,
-        allPokemons: action.payload 
+        allPokemons: action.payload,
       };
 
     case GET_DETAIL:
       return { ...state, pokemonDetail: action.payload };
 
     case GET_NAME:
-      return { 
-        ...state, 
-        pokemons:[ action.payload ]
+      return {
+        ...state,
+        pokemons: [action.payload],
       };
 
     case GET_TYPES:
@@ -44,70 +46,72 @@ const reducer = (state = initialState, action) => {
 
     case FILTER_TYPE:
       let allPokemonsType = state.allPokemons;
-      let typeFiltered = 
-        action.payload  === 'all'
+      let typeFiltered =
+        action.payload === "All"
           ? allPokemonsType
           : allPokemonsType.filter((pokemon) => {
-            return pokemon.types.some((name) => name === action.payload);
-          });
+              return pokemon.types.some((name) => name === action.payload);
+            });
       return {
         ...state,
-        pokemons: typeFiltered
-      }
+        pokemons: typeFiltered,
+      };
 
     case ORDER:
-      const orderPokemons = [...state.allPokemons];
-      if (action.payload === 'A') {
-        orderPokemons.sort(function (a,b) {
+      const orderPokemons = [...state.pokemons];
+      if (action.payload === "A") {
+        orderPokemons.sort(function (a, b) {
           if (a.name > b.name) {
-            return 1
+            return 1;
           }
           if (b.name > a.name) {
-            return -1
+            return -1;
           }
           return 0;
         });
         return {
           ...state,
-          pokemons: orderPokemons
-        }
+          pokemons: orderPokemons,
+        };
       }
 
-      if (action.payload === 'D') {
+      if (action.payload === "D") {
         orderPokemons.sort(function (a, b) {
           if (a.name > b.name) {
-            return -1
+            return -1;
           }
           if (b.name > a.name) {
-            return 1
+            return 1;
           }
         });
         return {
           ...state,
-          pokemons: orderPokemons
-        }
+          pokemons: orderPokemons,
+        };
       }
 
-      if (action.payload === 'W') { //W de Weak = Debil
-        orderPokemons.sort(function (a,b) {
+      if (action.payload === "W") {
+        //W de Weak = Debil
+        orderPokemons.sort(function (a, b) {
           if (a.attack > b.attack) {
-            return 1
+            return 1;
           }
           if (b.attack > a.attack) {
-            return -1
+            return -1;
           }
-          return 0
+          return 0;
         });
         return {
           ...state,
-          pokemons: orderPokemons
-        }
-      }    
-      
-      if (action.payload === 'S') { //S de Strong = fuerte
-        orderPokemons.sort(function (a,b) {
+          pokemons: orderPokemons,
+        };
+      }
+
+      if (action.payload === "S") {
+        //S de Strong = fuerte
+        orderPokemons.sort(function (a, b) {
           if (a.attack > b.attack) {
-            return -1
+            return -1;
           }
           if (b.attack > a.attack) {
             return 1;
@@ -115,15 +119,31 @@ const reducer = (state = initialState, action) => {
         });
         return {
           ...state,
-          pokemons: orderPokemons
-        }
+          pokemons: orderPokemons,
+        };
       }
 
-      if (action.payload === 'none') {
+      if (action.payload === "none") {
       }
       return {
         ...state,
-        pokemons: orderPokemons
+        pokemons: orderPokemons,
+      };
+
+    case CREATE:
+      const pokemonCreado = state.allPokemons;
+      const pokemonFilter =
+        action.payload === "Creado"
+          ? pokemonCreado.filter((poke) => poke.createdInDB)
+          : pokemonCreado.filter((poke) => !poke.createdInDB);
+      return {
+        ...state,
+        pokemons:
+          action.payload === "All"
+            ? pokemonCreado
+            : pokemonFilter.length
+            ? pokemonFilter
+            : []
       };
 
     case CLEAN_DETAIL:

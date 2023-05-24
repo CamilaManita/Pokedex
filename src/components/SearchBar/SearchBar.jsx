@@ -15,10 +15,8 @@ const SearchBar = ({setCurrentPage}) => {
 
     const submit = (event) => {
         event.preventDefault();
-        if (search.length > 0) {
-            dispatch(getName(search.toLocaleLowerCase()));
-            setSearch('');
-        }
+        dispatch(getName(search.toLocaleLowerCase()));
+        setSearch('');
         setCurrentPage(1);
     }
 

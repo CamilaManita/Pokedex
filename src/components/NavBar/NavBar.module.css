@@ -19,7 +19,7 @@
     border: transparent;
     font-weight: 800;
     margin-bottom: .5rem;
-
+    text-align: center;
     overflow: hidden;
     transition: 300ms;
 }
