@@ -23,6 +23,18 @@ export const Paginacion = ({pokemons, pagination, perPage, currentPage}) => {
     pagination(page);
   };
 
+  const handleFirstPage = () => {
+    if(currentPage !== 1) {
+      pagination(1)
+    }
+  }
+
+  const handleLastPage = () => {
+    if(currentPage !== pagesCount) {
+      pagination(pagesCount)
+    }
+  }
+
 
   return (
     <div className={styles.pagination}>
@@ -30,6 +42,13 @@ export const Paginacion = ({pokemons, pagination, perPage, currentPage}) => {
         <h1>¡Lo sentimos, no hay más pokemones!</h1>
       ) : ( */}
         <>
+          <button
+            className={currentPage !== 1 ? styles["pagination-button"] : styles.disable}
+            onClick={handleFirstPage}
+            disabled={currentPage === 1}
+          >
+            First
+          </button>
           <button
             className={currentPage !== 1 ? styles["pagination-button"] : styles.disable}
             onClick={() => handleClick(currentPage - 1)}
@@ -55,6 +74,13 @@ export const Paginacion = ({pokemons, pagination, perPage, currentPage}) => {
             disabled={currentPage === pagesCount}
           >
             Next
+          </button>
+          <button
+            className={currentPage !== pagesCount ? styles["pagination-button"] : styles.disable}
+            onClick={handleLastPage}
+            disabled={currentPage === pagesCount}
+          >
+            Last
           </button>
         </>
       {/* )} */}
