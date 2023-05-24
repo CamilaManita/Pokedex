@@ -1,6 +1,6 @@
 import style from "./Detail.module.css";
 import { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { cleanDetail, getDetail } from "../../redux/actions";
 
@@ -22,14 +22,18 @@ const Detail = () => {
   return (
     <div className={style.body}>
               <Link to="/home" className={style.link}>
-                <button>Home</button>
+                <button className={style.boton}>Home</button>
               </Link>
       <div className={style.container}>
         {loading?(
-          <div> Cargando </div>
+          <div className={style.detail}> 
+            <h1>
+              Loading 
+            </h1>
+          </div>
         ): !pokemon.id ? (
             <div> 
-              <h1>El pokemon no existe</h1>
+              <h1>The pokemon does not exist</h1>
             </div>
         ) : (
           <div>

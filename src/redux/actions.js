@@ -22,17 +22,20 @@ export const getDetail = (id) => {
 };
 
 export const getName = (name) => {
-    return async function (dispatch) {
-        try {
-            const { data } = await axios.get(`http://localhost:3001/pokemons?name=${name}`);
-            dispatch({ type: GET_NAME, payload: data })
-            
-        } catch (error) {
-            console.log(error.message);
-            return [];
-        }
+  return async function (dispatch) {
+    try {
+      const { data } = await axios.get(`http://localhost:3001/pokemons?name=${name}`);
+      dispatch({ type: GET_NAME, payload: data });
+    } catch (error) {
+      const errorData = {
+        message: 'Error: Pokemon not found',
+        status: error.response ? error.response.status : null
+      };
+      throw errorData;
     }
-}
+  };
+};
+
 
 export const getTypes = () => {
     return async function (dispatch) {

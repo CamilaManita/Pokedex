@@ -6,6 +6,7 @@ import style from './SearchBar.module.css';
 const SearchBar = ({setCurrentPage}) => {
     const dispatch = useDispatch();
     const [search, setSearch] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
 
 
     const handleChange = (event) => {
@@ -13,19 +14,27 @@ const SearchBar = ({setCurrentPage}) => {
         setSearch(event.target.value);
     }
 
-    const submit = (event) => {
+    const submit = async (event) => {
         event.preventDefault();
-        dispatch(getName(search.toLocaleLowerCase()));
-        setSearch('');
-        setCurrentPage(1);
-    }
+        if (search.length > 0) {
+          try {
+            await dispatch(getName(search.toLowerCase()));
+            setSearch('');
+            setCurrentPage(1);
+          } catch (error) {
+            alert('Pokemons not found');
+          }
+        }
+      };
+      
+      
 
     return (
         <div>
             <form onSubmit={submit} >
                 <div className={style.container}>
                     <input type='search' onChange={handleChange} value={search} placeholder='Search your pokemon...' className={style.inputs}/>
-                    <button>Find!</button>
+                    <button disabled={isLoading}>Find!</button>
                 </div>
             </form>
         </div>
