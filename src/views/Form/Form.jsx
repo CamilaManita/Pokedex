@@ -50,18 +50,39 @@ const Form = () => {
       alert("That type is already selected");
       return;
     }
-
+  
     setForm({ ...form, types: [...form.types, newType] });
     event.target.value = "";
+  };
+
+  const handleClearTypes = () => {
+    setForm({ ...form, types: [] });
   };
 
 
   //Funcion para manejar el envío del formulario
   const handleSubmit = async (event) => {
     event.preventDefault();
+    
+    if (form.types.length === 0) {
+      setForm({
+        name: "",
+        image: "",
+        hp: "",
+        attack: "",
+        defense: "",
+        speed: "",
+        height: "",
+        weight: "",
+        types: [],
+      });
+      
+      return;
+    }
+  
     dispatch(postPokemon(form));
     alert("Pokemon added successfully");
-
+  
     setForm({
       name: "",
       image: "",
@@ -73,7 +94,7 @@ const Form = () => {
       weight: "",
       types: [],
     });
-
+  
     navigate("/home");
   };
 
@@ -208,6 +229,9 @@ const Form = () => {
                   );
                 })}
               </select>
+              <button onClick={handleClearTypes} className={style.create}>
+                Clear Types
+              </button>
               {errorMessage.types && <p style={{ color: 'red' }}>{errorMessage.types}</p>}
             <ul>
               {

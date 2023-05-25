@@ -27,7 +27,6 @@ const SearchBar = ({setCurrentPage}) => {
         }
       };
       
-      
 
     return (
         <div>

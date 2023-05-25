@@ -15,11 +15,11 @@ const validation = (form) => {
     
     // types
     if (form.types.length === 0) errors.types = "you must select at least one type";
-    if (form.types.length > 2) errors.types = 'Puedes seleccionar hasta 2 tipos' 
+    if (form.types.length > 2) errors.types = 'You can select up to 2 types' 
     
     //hp
     if(!form.hp) errors.hp = "please complete this field";
-    if(form.hp > 100 || form.hp < 1) errors.hp = 'no puede ser mayor a 100 o mejor a 1' 
+    if(form.hp > 100 || form.hp < 1) errors.hp = 'cannot be greater than 100 or better than 1' 
     if(!/^[0-9]*$/.test(form.hp)) errors.hp = "only numbers are allowed";
 
     //attack
