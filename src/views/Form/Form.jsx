@@ -1,4 +1,4 @@
-import style from './Form.module.css'
+import style from "./Form.module.css";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
@@ -12,11 +12,11 @@ const Form = () => {
   const { pokemonsTypes } = useSelector((state) => state);
 
   useEffect(() => {
-    if(pokemonsTypes.length === 0){
-      dispatch(getTypes())
+    if (pokemonsTypes.length === 0) {
+      dispatch(getTypes());
     }
-  }, [dispatch])
-  
+  }, [dispatch]);
+
   // Inicializamos el estado del formulario con sus respectivas propiedades
   const [form, setForm] = useState({
     name: "",
@@ -29,9 +29,9 @@ const Form = () => {
     weight: "",
     types: [],
   });
-  
+
   const [errorMessage, setErrorMessage] = useState({});
-  
+
   // Función que maneja los cambios en los campos del formulario
   const changeHandler = (event) => {
     const property = event.target.name;
@@ -50,7 +50,7 @@ const Form = () => {
       alert("That type is already selected");
       return;
     }
-  
+
     setForm({ ...form, types: [...form.types, newType] });
     event.target.value = "";
   };
@@ -59,11 +59,10 @@ const Form = () => {
     setForm({ ...form, types: [] });
   };
 
-
   //Funcion para manejar el envío del formulario
   const handleSubmit = async (event) => {
     event.preventDefault();
-    
+
     if (form.types.length === 0) {
       setForm({
         name: "",
@@ -76,13 +75,13 @@ const Form = () => {
         weight: "",
         types: [],
       });
-      
+
       return;
     }
-  
+
     dispatch(postPokemon(form));
     alert("Pokemon added successfully");
-  
+
     setForm({
       name: "",
       image: "",
@@ -94,25 +93,43 @@ const Form = () => {
       weight: "",
       types: [],
     });
-  
+
     navigate("/home");
   };
 
   const disableSubmit = () => {
-    if(!form.name || !form.height || !form.weight || !form.hp || form.types.length === 0 || !form.image) return false;
-    if(errorMessage.name || errorMessage.height || errorMessage.weight || errorMessage.hp || errorMessage.types || errorMessage.image) return false;
+    if (
+      !form.name ||
+      !form.height ||
+      !form.weight ||
+      !form.hp ||
+      form.types.length === 0 ||
+      !form.image
+    )
+      return false;
+    if (
+      errorMessage.name ||
+      errorMessage.height ||
+      errorMessage.weight ||
+      errorMessage.hp ||
+      errorMessage.types ||
+      errorMessage.image
+    )
+      return false;
     return true;
-  }
+  };
 
   return (
     <div className={style.body}>
       <div>
-          <Link to="/home" className={style.link}>
-            <button className={style.boton}>Home</button>
-          </Link>
+        <Link to="/home" className={style.link}>
+          <button className={style.boton}>Home</button>
+        </Link>
         <form onSubmit={handleSubmit} className={style.form}>
           <div>
-            <label htmlFor="name" className={style.label}>Name</label>
+            <label htmlFor="name" className={style.label}>
+              Name
+            </label>
             <input
               type="text"
               name="name"
@@ -123,11 +140,15 @@ const Form = () => {
               onChange={changeHandler}
               className={style.inputs}
             />{" "}
-            {errorMessage.name && <p style={{color:'red'}}>{errorMessage.name}</p>}
+            {errorMessage.name && (
+              <p style={{ color: "red" }}>{errorMessage.name}</p>
+            )}
           </div>
 
           <div>
-            <label htmlFor="hp" className={style.label}>Health points</label>
+            <label htmlFor="hp" className={style.label}>
+              Health points
+            </label>
             <input
               type="number"
               name="hp"
@@ -138,13 +159,17 @@ const Form = () => {
               onChange={changeHandler}
               className={style.inputs}
             />
-            {errorMessage.hp && <p style={{color:'red'}}>{errorMessage.hp}</p>}
+            {errorMessage.hp && (
+              <p style={{ color: "red" }}>{errorMessage.hp}</p>
+            )}
           </div>
 
           <div>
-            <label htmlFor="attack" className={style.label}>Attack</label>
+            <label htmlFor="attack" className={style.label}>
+              Attack
+            </label>
             <input
-              type="text"
+              type="number"
               name="attack"
               id="attack"
               placeholder="attack"
@@ -153,13 +178,17 @@ const Form = () => {
               onChange={changeHandler}
               className={style.inputs}
             />
-            {errorMessage.attack && <p style={{color:'red'}}>{errorMessage.attack}</p>}
+            {errorMessage.attack && (
+              <p style={{ color: "red" }}>{errorMessage.attack}</p>
+            )}
           </div>
 
           <div>
-            <label htmlFor="defense" className={style.label}>Defense</label>
+            <label htmlFor="defense" className={style.label}>
+              Defense
+            </label>
             <input
-              type="text"
+              type="number"
               name="defense"
               id="defense"
               placeholder="defense"
@@ -168,13 +197,17 @@ const Form = () => {
               onChange={changeHandler}
               className={style.inputs}
             />
-            {errorMessage.defense && <p style={{color:'red'}}>{errorMessage.defense}</p>}
+            {errorMessage.defense && (
+              <p style={{ color: "red" }}>{errorMessage.defense}</p>
+            )}
           </div>
 
           <div>
-            <label htmlFor="speed" className={style.label}>Speed</label>
+            <label htmlFor="speed" className={style.label}>
+              Speed
+            </label>
             <input
-              type="text"
+              type="number"
               name="speed"
               id="speed"
               placeholder="speed"
@@ -183,13 +216,17 @@ const Form = () => {
               onChange={changeHandler}
               className={style.inputs}
             />
-            {errorMessage.speed && <p style={{color:'red'}}>{errorMessage.speed}</p>}
+            {errorMessage.speed && (
+              <p style={{ color: "red" }}>{errorMessage.speed}</p>
+            )}
           </div>
 
           <div>
-            <label htmlFor="height" className={style.label}>Height</label>
+            <label htmlFor="height" className={style.label}>
+              Height
+            </label>
             <input
-              type="text"
+              type="number"
               name="height"
               id="height"
               placeholder="height"
@@ -198,13 +235,17 @@ const Form = () => {
               onChange={changeHandler}
               className={style.inputs}
             />
-            {errorMessage.height && <p style={{color:'red'}}>{errorMessage.height}</p>}
+            {errorMessage.height && (
+              <p style={{ color: "red" }}>{errorMessage.height}</p>
+            )}
           </div>
 
           <div>
-            <label htmlFor="weight" className={style.label}>Weight</label>
+            <label htmlFor="weight" className={style.label}>
+              Weight
+            </label>
             <input
-              type="text"
+              type="number"
               name="weight"
               id="weight"
               placeholder="weight"
@@ -213,40 +254,44 @@ const Form = () => {
               onChange={changeHandler}
               className={style.inputs}
             />
-            {errorMessage.weight && <p style={{color:'red'}}>{errorMessage.weight}</p>}
+            {errorMessage.weight && (
+              <p style={{ color: "red" }}>{errorMessage.weight}</p>
+            )}
           </div>
 
-          
           <div>
             <label className={style.label}> Types </label>
-              <select onChange={handleSelect} className={style.select} >
-                <option value={form.types} className={style.option}> Select types</option>
-                {pokemonsTypes?.map((type) => {
-                  return (
-                    <option key={type.id} name={type.id} value={type.id}>
-                      {type.name}
-                    </option>
-                  );
-                })}
-              </select>
-              <button onClick={handleClearTypes} className={style.create}>
-                Clear Types
-              </button>
-              {errorMessage.types && <p style={{ color: 'red' }}>{errorMessage.types}</p>}
+            <select onChange={handleSelect} className={style.select}>
+              <option value={form.types} className={style.option}>
+                {" "}
+                Select types
+              </option>
+              {pokemonsTypes?.map((type) => {
+                return (
+                  <option key={type.id} name={type.id} value={type.id}>
+                    {type.name}
+                  </option>
+                );
+              })}
+            </select>
+            <button onClick={handleClearTypes} className={style.create}>
+              Clear Types
+            </button>
+            {errorMessage.types && (
+              <p style={{ color: "red" }}>{errorMessage.types}</p>
+            )}
             <ul>
-              {
-                pokemonsTypes?.map((type) => {
-                    if(form.types.includes(type.id.toString())) {
-                      return (
-                        <li key={type.id}>{type.name}</li>
-                      )
-                    }
-                })
-              }
+              {pokemonsTypes?.map((type) => {
+                if (form.types.includes(type.id.toString())) {
+                  return <li key={type.id}>{type.name}</li>;
+                }
+              })}
             </ul>
           </div>
           <div>
-            <label htmlFor="image" className={style.label}>Image</label>
+            <label htmlFor="image" className={style.label}>
+              Image
+            </label>
             <input
               type="text"
               name="image"
@@ -258,11 +303,19 @@ const Form = () => {
               onChange={changeHandler}
               className={style.inputs}
             />
-          {errorMessage.image && <p style={{color:'red'}}>{errorMessage.image}</p>}
+            {errorMessage.image && (
+              <p style={{ color: "red" }}>{errorMessage.image}</p>
+            )}
           </div>
           <div></div>
 
-          <button type="submit" className={style.create} disabled={!disableSubmit()}>Create Pokemon</button>
+          <button
+            type="submit"
+            className={style.create}
+            disabled={!disableSubmit()}
+          >
+            Create Pokemon
+          </button>
         </form>
       </div>
     </div>

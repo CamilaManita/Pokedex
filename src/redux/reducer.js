@@ -1,4 +1,3 @@
-import { filter } from "./actions";
 import {
   GET_POKEMONS,
   GET_DETAIL,
@@ -143,7 +142,7 @@ const reducer = (state = initialState, action) => {
             ? pokemonCreado
             : pokemonFilter.length
             ? pokemonFilter
-            : []
+            : [],
       };
 
     case CLEAN_DETAIL:

@@ -1,71 +1,75 @@
 .card {
-    width: 175px;
-    height: 250px;
-    display: flex;
-    /* margin: 10px; */
-    flex-direction: column;
-    border-radius: 0px 0px 0px 0px;
-    transition: 0.2s all;
-    color: #050801;
-    background: rgba(255, 255, 255, 0.521);
-    background-color: transparent;
-    border: 1px solid #1C1919;
-    background-image: url('../../../Imagenes/fondoCard.jpg');
+  width: 175px;
+  height: 250px;
+  display: flex;
+  /* margin: 10px; */
+  flex-direction: column;
+  border-radius: 0px 0px 0px 0px;
+  transition: 0.2s all;
+  color: #050801;
+  background: rgba(255, 255, 255, 0.521);
+  background-color: transparent;
+  border: 1px solid #1C1919;
+  background-image: url('../../../Imagenes/fondoCard.jpg');
 }
-  
-  /* ------------------------------------------------------------------------------------------ */
-  .textBoxName {
-    text-align: center;
-    /* border: 0.5px solid #1C1919; */
-    /* background: #FFCD00; */
-    height: 10%;
-    margin: 10px; /*Agrega margen alrededor del elemento*/
-    /* padding-top: 5px; Ajusta la cantidad de espacio en la parte superior */
-  }
-  
-  .textBoxType {
-    text-align: center ;
-    border: 0.5px solid #1C1919;
-    background: #CD853F;
-    height: 30px;
-    margin: 15px; /* Agrega margen alrededor del elemento */
-    line-height: 5px; /* Ajusta la altura de línea para mover el texto hacia arriba */
-    /* padding-bottom: 15px; */
-  }
-  
-  .image {
-    object-fit: cover;
-    height: 65%;
-    
-  }
-  /* ------------------------------------------------------------------------------------------ */
-  .name {
-    /* font-family: Arial; */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 15px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin-left: 2%;
-    margin-right: 2%;
-    margin-top: 1%;
-  }
-  
-  .types {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    text-transform: capitalize;
-    font-size: 15px;
-  }
-  
-  .a:link {
-    margin: 1% 1% 2% 1%;
-    text-decoration: none;
-  }
-  
-  .a:link:hover {
-    background: #c8d1d2;
-    color: #050801;
-    box-shadow: 0 0 25px #c8d1d2, 0 0 25px #c8d1d2;
-    /* box-shadow: 0 0 25px #FF3C38, 0 0 25px #FF3C38; */
-    transform: scale(1.1);
-    border-radius: 0px 0px 0px 0px;
-  }
+
+/* ------------------------------------------------------------------------------------------ */
+.textBoxName {
+  text-align: center;
+  /* border: 0.5px solid #1C1919; */
+  /* background: #FFCD00; */
+  height: 10%;
+  margin: 10px;
+  /*Agrega margen alrededor del elemento*/
+  /* padding-top: 5px; Ajusta la cantidad de espacio en la parte superior */
+}
+
+.textBoxType {
+  text-align: center;
+  border: 0.5px solid #1C1919;
+  background: #CD853F;
+  height: 30px;
+  margin: 15px;
+  /* Agrega margen alrededor del elemento */
+  line-height: 5px;
+  /* Ajusta la altura de línea para mover el texto hacia arriba */
+  /* padding-bottom: 15px; */
+}
+
+.image {
+  object-fit: cover;
+  height: 65%;
+
+}
+
+/* ------------------------------------------------------------------------------------------ */
+.name {
+  /* font-family: Arial; */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 15px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-left: 2%;
+  margin-right: 2%;
+  margin-top: 1%;
+}
+
+.types {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-transform: capitalize;
+  font-size: 15px;
+}
+
+.a:link {
+  margin: 1% 1% 2% 1%;
+  text-decoration: none;
+}
+
+.a:link:hover {
+  background: #c8d1d2;
+  color: #050801;
+  box-shadow: 0 0 25px #c8d1d2, 0 0 25px #c8d1d2;
+  /* box-shadow: 0 0 25px #FF3C38, 0 0 25px #FF3C38; */
+  transform: scale(1.1);
+  border-radius: 0px 0px 0px 0px;
+}

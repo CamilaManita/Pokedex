@@ -10,31 +10,28 @@ const Detail = () => {
   const pokemon = useSelector((state) => state.pokemonDetail);
   const dispatch = useDispatch();
 
-
   console.log(pokemon);
   useEffect(() => {
     dispatch(getDetail(id))
-    .then(() => setLoading(false))
-    .catch(() => setLoading(false))
+      .then(() => setLoading(false))
+      .catch(() => setLoading(false));
     return () => dispatch(cleanDetail());
   }, [id, dispatch]);
 
   return (
     <div className={style.body}>
-              <Link to="/home" className={style.link}>
-                <button className={style.boton}>Home</button>
-              </Link>
+      <Link to="/home" className={style.link}>
+        <button className={style.boton}>Home</button>
+      </Link>
       <div className={style.container}>
-        {loading?(
-          <div className={style.detail}> 
-            <h1>
-              Loading 
-            </h1>
+        {loading ? (
+          <div className={style.detail}>
+            <h1>Loading</h1>
           </div>
-        ): !pokemon.id ? (
-            <div> 
-              <h1>The pokemon does not exist</h1>
-            </div>
+        ) : !pokemon.id ? (
+          <div>
+            <h1>The pokemon does not exist</h1>
+          </div>
         ) : (
           <div>
             <div>
